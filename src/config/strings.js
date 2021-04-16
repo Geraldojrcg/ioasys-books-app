@@ -12,5 +12,16 @@ export default {
   home: {
     pages: 'Páginas',
     of: 'de'
+  },
+  book: {
+    informations: 'Informações',
+    title: 'Título',
+    pages: 'Páginas',
+    publisher: 'Editora',
+    published: 'Publicação',
+    publishedAt: 'Lançado em',
+    language: 'Idioma',
+    category: 'Categoria',
+    description: 'Resenha da Editora'
   }
 };

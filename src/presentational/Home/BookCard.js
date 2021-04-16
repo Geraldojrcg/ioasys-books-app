@@ -5,12 +5,17 @@ import { string, number, shape, arrayOf } from 'prop-types';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 
+import useStrings from '@/hooks/useStrings';
+
 import { SELECT_BOOK } from '@/store/slices/bookSlice';
 
 const BookCard = ({ item }) => {
-  const { imageUrl, title, authors, pageCount, publisher, published } = item;
-  const navigation = useNavigation();
   const dispatch = useDispatch();
+
+  const navigation = useNavigation();
+  const { t } = useStrings('book');
+
+  const { imageUrl, title, authors, pageCount, publisher, published } = item;
 
   return (
     <StyledCard
@@ -26,9 +31,15 @@ const BookCard = ({ item }) => {
           <StyledAuthors>{authors.join(', ')}</StyledAuthors>
         </StyledDetails>
         <StyledDetails>
-          <StyledInfo>{pageCount} páginas</StyledInfo>
-          <StyledInfo>Editora {publisher}</StyledInfo>
-          <StyledInfo>Lançado em {published}</StyledInfo>
+          <StyledInfo>
+            {pageCount} {t('pages')}
+          </StyledInfo>
+          <StyledInfo>
+            {t('publisher')} {publisher}
+          </StyledInfo>
+          <StyledInfo>
+            {t('publishedAt')} {published}
+          </StyledInfo>
         </StyledDetails>
       </StyledColumn>
     </StyledCard>

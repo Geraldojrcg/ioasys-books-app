@@ -123,11 +123,10 @@ const StyledErrorView = styled.View`
 `;
 
 const StyledErrorMessage = styled.Text`
-  font-family: 'Heebo-Regular';
-  font-weight: bold;
   font-size: 16px;
-  line-height: 16px;
-  color: white;
+  line-height: 20px;
+  font-family: 'Heebo-Bold';
+  color: ${({ theme: { colors } }) => colors.white};
 `;
 
 export default Login;

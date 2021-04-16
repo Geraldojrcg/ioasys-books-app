@@ -4,10 +4,15 @@ import styled from 'styled-components/native';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
 
+import useStrings from '@/hooks/useStrings';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Book = () => {
   const navigation = useNavigation();
+
+  const { t } = useStrings('book');
+
   const { selectedBook } = useSelector(({ books }) => books);
   const {
     imageUrl,
@@ -22,6 +27,7 @@ const Book = () => {
     isbn10,
     isbn13
   } = selectedBook;
+
   return (
     <>
       <StyledHeadContainer>
@@ -36,25 +42,25 @@ const Book = () => {
         </StyledTitle>
         <StyledAuthors>{authors.join(', ')}</StyledAuthors>
         <StyledInfoContainer>
-          <StyledSubtitle>Informações</StyledSubtitle>
+          <StyledSubtitle>{t('informations')}</StyledSubtitle>
           <StyledInfoRow>
-            <StyledInfoLabel>Páginas</StyledInfoLabel>
+            <StyledInfoLabel>{t('pages')}</StyledInfoLabel>
             <StyledInfoText>{pageCount}</StyledInfoText>
           </StyledInfoRow>
           <StyledInfoRow>
-            <StyledInfoLabel>Editora</StyledInfoLabel>
+            <StyledInfoLabel>{t('publisher')}</StyledInfoLabel>
             <StyledInfoText>{publisher}</StyledInfoText>
           </StyledInfoRow>
           <StyledInfoRow>
-            <StyledInfoLabel>Publicação</StyledInfoLabel>
+            <StyledInfoLabel>{t('published')}</StyledInfoLabel>
             <StyledInfoText>{published}</StyledInfoText>
           </StyledInfoRow>
           <StyledInfoRow>
-            <StyledInfoLabel>Idioma</StyledInfoLabel>
+            <StyledInfoLabel>{t('language')}</StyledInfoLabel>
             <StyledInfoText>{language}</StyledInfoText>
           </StyledInfoRow>
           <StyledInfoRow>
-            <StyledInfoLabel>Categoria</StyledInfoLabel>
+            <StyledInfoLabel>{t('category')}</StyledInfoLabel>
             <StyledInfoText>{category}</StyledInfoText>
           </StyledInfoRow>
           <StyledInfoRow>
@@ -66,7 +72,7 @@ const Book = () => {
             <StyledInfoText>{isbn13}</StyledInfoText>
           </StyledInfoRow>
         </StyledInfoContainer>
-        <StyledSubtitle>Resenha da Editora</StyledSubtitle>
+        <StyledSubtitle>{t('description')}</StyledSubtitle>
         <StyledInfoText>{description}</StyledInfoText>
       </StyledContainer>
     </>
@@ -98,14 +104,14 @@ const StyledInfoContainer = styled.View`
 
 const StyledImage = styled.Image`
   width: 100%;
-  height: 300px;
+  height: 340px;
 `;
 
 const StyledTitle = styled.Text`
-  font-family: 'Heebo-Regular';
-  font-weight: bold;
+  margin-top: 10px;
   font-size: 28px;
   line-height: 40px;
+  font-family: 'Heebo-Bold';
   color: ${({ theme: { colors } }) => colors.black};
 `;
 
@@ -116,11 +122,11 @@ const StyledAuthors = styled.Text`
 `;
 
 const StyledSubtitle = styled.Text`
-  font-family: 'Heebo-Regular';
-  font-weight: bold;
+  margin-bottom: 10px;
   font-size: 14px;
   line-height: 28px;
   text-transform: uppercase;
+  font-family: 'Heebo-Bold';
   color: ${({ theme: { colors } }) => colors.black};
 `;
 
@@ -130,8 +136,7 @@ const StyledInfoRow = styled.View`
 `;
 
 const StyledInfoLabel = styled.Text`
-  font-family: 'Heebo-Regular';
-  font-weight: bold;
+  font-family: 'Heebo-Bold';
   font-size: 14px;
   line-height: 28px;
   color: ${({ theme: { colors } }) => colors.black};
